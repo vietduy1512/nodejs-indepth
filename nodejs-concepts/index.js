@@ -1,4 +1,5 @@
 let helloWorldComp = require("./components/1.HelloWorld");
+let modulesComp = require("./components/2.Modules");
 
 let http = require("http");
 
@@ -10,7 +11,9 @@ http.createServer(function (req, res) {
       case '/hello-world':
         helloWorldComp.send(req, res);
         break;
-    
+      case '/modules':
+        modulesComp.send(req, res, modulesComp.now());
+        break;
       default:
         res.end("404 Not Found")
         break;
