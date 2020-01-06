@@ -1,1 +1,1 @@
-console.log("Hello World");
+require("./components/1.HelloWorld");
