@@ -8,10 +8,10 @@ exports.read = (req, res) => {
   });
 };
 
-exports.create = (req, res) => {
+exports.write = (req, res) => {
   fs.writeFile('./components/3.FileSystem/newfile.txt', 'Hello content!', function (err) {
     if (err) throw err;
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end("Create file successfully!");
+    res.end("Write file successfully!");
   });
 };
