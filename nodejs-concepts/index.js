@@ -1,5 +1,6 @@
 let helloWorldComp = require("./components/1.HelloWorld");
 let modulesComp = require("./components/2.Modules");
+let fileSystemComp = require("./components/3.FileSystem");
 
 let http = require("http");
 let url = require('url');
@@ -16,6 +17,9 @@ http.createServer(function (req, res) {
         break;
       case '/modules':
         modulesComp.send(req, res, modulesComp.now());
+        break;
+      case '/file-system':
+        fileSystemComp.read(req, res);
         break;
       default:
         res.end("404 Not Found")
