@@ -8,7 +8,10 @@ var constants = require('./app-constants');
 
 var homeRouter = require('./routes/home');
 var usersRouter = require('./routes/users');
-var catalogRouter = require('./routes/author');
+var authorsRouter = require('./routes/authors');
+var booksRouter = require('./routes/books');
+var bookinstancesRouter = require('./routes/bookinstances');
+var genresRouter = require('./routes/genres');
 
 var app = express();
 
@@ -28,7 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
-app.use('/catalog', catalogRouter);
+app.use('/authors', authorsRouter);
+app.use('/books', booksRouter);
+app.use('/bookinstances', bookinstancesRouter);
+app.use('/genres', genresRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
