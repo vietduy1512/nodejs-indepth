@@ -19,9 +19,13 @@ mongoose.connect(constants.mongoUrl, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+var exphbs = require('express-handlebars');
+var handlebars  = require('./helpers/handlebars.js')(exphbs);
+app.engine('handlebars', handlebars.engine);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
 app.use(express.json());
