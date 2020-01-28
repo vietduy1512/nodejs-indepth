@@ -1,6 +1,7 @@
 module.exports = Object.freeze({
   author_list: 'authors/author_list',
   author_detail: 'authors/author_detail',
+  author_form: 'authors/author_form',
   book_list: 'books/book_list',
   book_detail: 'books/book_detail',
   bookinstance_list: 'bookinstances/bookinstance_list',
