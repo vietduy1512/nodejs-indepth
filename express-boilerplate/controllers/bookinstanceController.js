@@ -9,7 +9,7 @@ exports.bookinstance_list = function(req, res, next) {
         if (err) {
             return next(err);
         }
-        res.render('books/bookinstance_list', { title: 'Book Instance List', bookinstance_list: bookinstances });
+        res.render('bookinstances/bookinstance_list', { title: 'Book Instance List', bookinstance_list: bookinstances });
       });
 };
 
