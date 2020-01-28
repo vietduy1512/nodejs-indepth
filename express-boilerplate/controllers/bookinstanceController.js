@@ -1,5 +1,5 @@
-
 var BookInstance = require('../models/bookinstance');
+var routes = require('../constants/routes')
 
 exports.bookinstance_list = function(req, res, next) {
 
@@ -9,7 +9,7 @@ exports.bookinstance_list = function(req, res, next) {
         if (err) {
             return next(err);
         }
-        res.render('bookinstances/bookinstance_list', { title: 'Book Instance List', bookinstance_list: bookinstances });
+        res.render(routes.bookinstance_list, { title: 'Book Instance List', bookinstance_list: bookinstances });
       });
 };
 
@@ -24,7 +24,7 @@ exports.bookinstance_detail = function(req, res, next) {
             err.status = 404;
             return next(err);
         }
-        res.render('bookinstances/bookinstance_detail', { title: 'Copy: '+bookinstance.book.title, bookinstance:  bookinstance});
+        res.render(routes.bookinstance_detail, { title: 'Copy: '+bookinstance.book.title, bookinstance:  bookinstance});
     })
 };
 

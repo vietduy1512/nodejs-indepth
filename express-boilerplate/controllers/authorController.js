@@ -2,6 +2,7 @@
 var Author = require('../models/author');
 var Book = require('../models/book');
 var async = require('async');
+var routes = require('../constants/routes')
 
 exports.author_list = function(req, res, next) {
 
@@ -11,7 +12,7 @@ exports.author_list = function(req, res, next) {
         if (err) {
             return next(err);
         }
-        res.render('authors/author_list', { title: 'Author List', author_list: list_authors });
+        res.render(routes.author_list, { title: 'Author List', author_list: list_authors });
       });
 };
 
@@ -33,7 +34,7 @@ exports.author_detail = function(req, res, next) {
             err.status = 404;
             return next(err);
         }
-        res.render('authors/author_detail', { title: 'Author Detail', author: results.author, author_books: results.authors_books } );
+        res.render(routes.author_detail, { title: 'Author Detail', author: results.author, author_books: results.authors_books } );
     });
 
 };

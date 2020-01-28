@@ -1,6 +1,7 @@
 var Genre = require('../models/genre');
 var Book = require('../models/book');
 var async = require('async');
+var routes = require('../constants/routes')
 const validator = require('express-validator');
 
 exports.genre_list = function(req, res, next) {
@@ -10,7 +11,7 @@ exports.genre_list = function(req, res, next) {
           if (err) {
               return next(err);
           }
-          res.render('genres/genre_list', { title: 'Genre List', genre_list: list_genres });
+          res.render(routes.genre_list, { title: 'Genre List', genre_list: list_genres });
       })
 };
 
@@ -32,12 +33,12 @@ exports.genre_detail = function(req, res, next) {
             err.status = 404;
             return next(err);
         }
-        res.render('genres/genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books } );
+        res.render(routes.genre_detail, { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books } );
     });
 };
 
-exports.genre_create_get = function(req, res, next) {     
-    res.render('genres/genre_form', { title: 'Create Genre' });
+exports.genre_create_get = function(req, res, next) {
+    res.render(routes.genre_form, { title: 'Create Genre' });
 };
 
 exports.genre_create_post = exports.genre_create_post =  [
@@ -54,7 +55,7 @@ exports.genre_create_post = exports.genre_create_post =  [
       const errors = validator.validationResult(req);
       if (!errors.isEmpty()) {
         // There are errors. Render the form again with sanitized values/error messages.
-        res.render('genres/genre_form', { title: 'Create Genre', genre: genre, errors: errors.array()});
+        res.render(routes.genre_form, { title: 'Create Genre', genre: genre, errors: errors.array()});
         return;
       } else {
         Genre.findOne({ 'name': req.body.name })

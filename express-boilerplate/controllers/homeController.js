@@ -4,6 +4,7 @@ var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
 
 var async = require('async');
+var routes = require('../constants/routes')
 
 exports.index = function(req, res) {
 
@@ -24,6 +25,6 @@ exports.index = function(req, res) {
         Genre.countDocuments({}, callback);
     }
   }, function(err, results) {
-      res.render('index', { title: 'Local Library Home', error: err, data: results });
+      res.render(routes.home, { title: 'Local Library Home', error: err, data: results });
   });
 };
