@@ -2,7 +2,7 @@
 var Author = require('../models/author');
 var Book = require('../models/book');
 var async = require('async');
-var routes = require('../constants/routes')
+var views = require('../constants/views')
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
@@ -14,7 +14,7 @@ exports.author_list = function(req, res, next) {
         if (err) {
             return next(err);
         }
-        res.render(routes.author_list, { title: 'Author List', author_list: list_authors });
+        res.render(views.author_list, { title: 'Author List', author_list: list_authors });
       });
 };
 
@@ -36,13 +36,13 @@ exports.author_detail = function(req, res, next) {
             err.status = 404;
             return next(err);
         }
-        res.render(routes.author_detail, { title: 'Author Detail', author: results.author, author_books: results.authors_books } );
+        res.render(views.author_detail, { title: 'Author Detail', author: results.author, author_books: results.authors_books } );
     });
 
 };
 
 exports.author_create_get = function(req, res, next) {       
-    res.render(routes.author_form, { title: 'Create Author'});
+    res.render(views.author_form, { title: 'Create Author'});
 };
 
 exports.author_create_post = [
@@ -94,7 +94,7 @@ exports.author_delete_get = function(req, res, next) {
         if (results.author == null) {
             res.redirect('/catalog/authors');
         }
-        res.render(routes.author_delete, { title: 'Delete Author', author: results.author, author_books: results.authors_books } );
+        res.render(views.author_delete, { title: 'Delete Author', author: results.author, author_books: results.authors_books } );
     });
 };
 
@@ -110,7 +110,7 @@ exports.author_delete_post = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.authors_books.length > 0) {
-            res.render(routes.author_delete, { title: 'Delete Author', author: results.author, author_books: results.authors_books } );
+            res.render(views.author_delete, { title: 'Delete Author', author: results.author, author_books: results.authors_books } );
             return;
         }
         else {

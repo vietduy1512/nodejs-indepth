@@ -1,7 +1,7 @@
 var Book = require('../models/book');
 var BookInstance = require('../models/bookinstance');
 var async = require('async');
-var routes = require('../constants/routes')
+var views = require('../constants/views')
 
 exports.book_list = function(req, res, next) {
 
@@ -11,7 +11,7 @@ exports.book_list = function(req, res, next) {
         if (err) { 
             return next(err);
         }
-        res.render(routes.book_list, { title: 'Book List', book_list: list_books });
+        res.render(views.book_list, { title: 'Book List', book_list: list_books });
       });
 };
 
@@ -35,7 +35,7 @@ exports.book_detail = function(req, res, next) {
             err.status = 404;
             return next(err);
         }
-        res.render(routes.book_detail, { title: results.book.title, book: results.book, book_instances: results.book_instance } );
+        res.render(views.book_detail, { title: results.book.title, book: results.book, book_instances: results.book_instance } );
     });
 };
 
