@@ -9,6 +9,7 @@ exports.book_list = function(req, res, next) {
         if (err) { 
             return next(err);
         }
+        console.log(list_books)
         res.render('books/book_list', { title: 'Book List', book_list: list_books });
       });
 };
